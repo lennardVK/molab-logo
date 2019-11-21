@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container">
+    <div class="ml_wrapper col-md-12">
+      <ml-form></ml-form>
+    </div>
+    <div class="ml_wrapper col-md-12">
+      <ml-logo></ml-logo>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Firebase from "../assets/js/firebase.js";
+import MlForm from "@/components/MlForm.vue";
+import LogoWrapper from "@/components/LogoWrapper.vue";
 
 export default {
-  name: "home",
+  data: function() {
+    return {
+      message: Firebase
+    };
+  },
+
   components: {
-    HelloWorld
+    "ml-form": MlForm,
+    "ml-logo": LogoWrapper
+  },
+
+  methods: {
+    mounted() {
+      console.log("currentProjects: ", this.message);
+    }
   }
 };
 </script>
+
+<style></style>
